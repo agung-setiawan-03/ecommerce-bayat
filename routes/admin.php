@@ -3,8 +3,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
 
-// Admin Route
+// Admin Dashboard Route
 Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+
+// Admin login Route
+Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 // Profile Route
 Route::get('profile', [ProfileController::class,'index'])->name('profile');

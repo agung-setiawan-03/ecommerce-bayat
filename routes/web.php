@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Route;
 // Frontend Route
 Route::get('/',[HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -21,10 +19,17 @@ Route::middleware('auth')->group(function () {
 
 
 
-// User Route
-Route::get('user/dashboard',[UserController::class,'dashboard'])->middleware(['auth','role:user'])->name('user.dashboard');
+
 
 
 require __DIR__.'/auth.php';
 
-Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
+
+
+
+
+
+Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user'], function(){
+    // User dashboard route 
+    Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+});

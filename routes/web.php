@@ -33,6 +33,8 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user'], function(){
     // User dashboard route 
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-    // 
+    // User Profile Route 
     Route::get('profile', [UserProfileController::class, 'index'])->name('profile');
+    // User Update Profile Route
+    Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
 });

@@ -26,7 +26,7 @@ class ProfileController extends Controller
     // Mengecek apakah foto sudah ada atau belum jika sudah ada maka akan disimpan di folder public/uploads
     $user = Auth::user();
     
-    if($request->has('image')){
+    if($request->hasFile('image')){
 
         // Menghapus file apabila user telah mengupdate foto 
         if(File::exists(public_path($user->foto))){

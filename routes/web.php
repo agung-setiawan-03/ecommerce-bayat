@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Backend\AdminController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Route
@@ -27,7 +28,8 @@ require __DIR__.'/auth.php';
 
 
 
-
+// Admin login Route
+Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user'], function(){

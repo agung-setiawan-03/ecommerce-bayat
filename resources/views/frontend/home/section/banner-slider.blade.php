@@ -10,7 +10,7 @@
                                 <div class="wsus__single_slider_text">
                                     <h3>{!! $slider->tipe !!}</h3>
                                     <h1>{!! $slider->title !!}</h1>
-                                    <h6>mulai dari @currency($slider->harga_awal)</h6>
+                                    <h6>mulai dari {{formatRupiah($slider->harga_awal, true)}}</h6>
                                     <a class="common_btn" href="{{$slider->btn_url}}">shop now</a>
                                 </div>
                             </div>

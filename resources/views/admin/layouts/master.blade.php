@@ -21,8 +21,11 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
     <link rel="stylesheet" href="//cdn.datatables.net/2.0.5/css/dataTables.dataTables.min.css">
-
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.6/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <link rel="stylesheet" href="{{asset('backend/assets/css/bootstrap-iconpicker.min.css')}}">
+    
+    
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -84,9 +87,7 @@
     <script src="{{ asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
         // <!-- Page Specific JS File -->
-        <
-        script src = "{{ asset('backend/assets/js/page/index-0.js') }}" >
-    </script>
+        <script src = "{{ asset('backend/assets/js/page/index-0.js') }}" ></script>
 
     // <!-- Template JS File -->
     <script src="{{ asset('backend/assets/js/scripts.js') }}"></script>
@@ -94,6 +95,9 @@
     <script src="//cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{asset('backend/assets/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
+    
+
 
     <script>
         @if ($errors->any())
@@ -140,14 +144,17 @@
                             title: "Berhasil",
                             status: data.message
                         });
+                        window.location.reload();
                         }else if(data.status == 'error'){
                           Swal.fire({
                             title: "Item Tidak Bisa Dihapus!",
-                            status: data.message
+                            status: data.message,
+                            icon: "error",
+                            text: data.message
                         });
                         }
 
-                        window.location.reload();
+                       
 
 
                       },
